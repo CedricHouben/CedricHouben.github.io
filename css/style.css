@@ -9,4 +9,15 @@
 .partnerscard{
     height: 432px;
 }
+
+}
+@media only screen and (min-width: 768px) {
+.logo{
+    max-width: 40%;
+}
+
+.aboutme{
+    max-width: 50%;
+
+}
 }
