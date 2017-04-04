@@ -1,0 +1,12 @@
+/* YOUR CUSTOM STYLES */
+@media only screen and (min-width: 768px) {
+.werkwijzecard{
+    height: 339px;
+}
+.kwaliteitswaarborgencard{
+    height: 621px;
+}
+.partnerscard{
+    height: 432px;
+}
+}
