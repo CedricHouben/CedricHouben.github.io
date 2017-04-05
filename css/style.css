@@ -1,11 +1,13 @@
 /* YOUR CUSTOM STYLES */
 @media only screen and (min-width: 768px) {
-
-
-}
-@media only screen and (min-width: 768px) {
 .logo{
     max-width: 45%;
+}
+
+}
+@media only screen and (max-width: 768px) {
+.logo{
+    max-width: 80%;
 }
 
 .aboutme{
