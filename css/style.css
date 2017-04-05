@@ -1,7 +1,7 @@
 /* YOUR CUSTOM STYLES */
-@media only screen and (min-width: 768px) {
+@media only screen and (min-width: 1024px) /* Desktop */{
 .logo{
-    max-width: 45%;
+    max-width: 40%;
 }
 .aboutme{
     max-width: 50%;
@@ -10,13 +10,13 @@
 }
 
 
-@media only screen and (max-width: 768px) {
+@media only screen and (min-width: 768px) /* Tablet */ {
     .logo{
-        max-width: 60%;
+        max-width: 45%;
     }
 }
 
-@media  only screen and(min-width:480px)  { /* smartphones, Android phones, landscape iPhone */
+@media  only screen and (max-width: 480px) /* Phone */ {
     .logo{
         max-width: 80%;
     }
