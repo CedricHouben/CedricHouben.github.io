@@ -56,9 +56,15 @@
         }
         
         .scrolling-navbar {
-            /*-webkit-transition: -webkit-transform  background .5s ease-in-out, padding .5s ease-in-out;*/
+            -webkit-transition: background .5s ease-in-out, padding .5s ease-in-out;
             -moz-transition: background .5s ease-in-out, padding .5s ease-in-out;
             transition: background .5s ease-in-out, padding .5s ease-in-out;
+            /* Enable hardware acceleration to fix laggy transitions */
+            -webkit-transform: translateZ(0);
+            -moz-transform: translateZ(0);
+            -ms-transform: translateZ(0);
+            -o-transform: translateZ(0);
+            transform: translateZ(0);
         }
         
         .top-nav-collapse {
