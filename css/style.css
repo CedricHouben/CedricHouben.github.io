@@ -41,3 +41,13 @@ display:block;
 height:50px; /* fixed header height*/
 margin:-50px 0 0; /* negative fixed header height */
 }
+
+a:link {
+color: #000000;
+}
+a:visited {
+color: #000000;
+}
+a:hover {
+color: #000000;
+}
