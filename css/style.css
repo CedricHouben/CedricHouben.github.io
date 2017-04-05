@@ -3,17 +3,19 @@
 .logo{
     max-width: 45%;
 }
+.aboutme{
+    max-width: 50%;
 
 }
+}
+
+
 @media only screen and (max-width: 768px) {
 .logo{
     max-width: 80%;
 }
 
-.aboutme{
-    max-width: 50%;
 
-}
 }
 
 .partnerscard{
@@ -23,4 +25,11 @@
 .my-flex-card > div > div.card {
     height: calc(100% - 15px);
     margin-bottom: 15px;
+}
+
+:target:before {
+content:"";
+display:block;
+height:50px; /* fixed header height*/
+margin:-50px 0 0; /* negative fixed header height */
 }
