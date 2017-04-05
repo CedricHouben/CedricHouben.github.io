@@ -23,6 +23,8 @@
 }
 
 .my-flex-card > div > div.card {
+    height:-webkit-calc(100% - 15px);
+    height: -moz-calc(50%-20px);
     height: calc(100% - 15px);
     margin-bottom: 15px;
 }
