@@ -1,14 +1,11 @@
 /* YOUR CUSTOM STYLES */
 @media only screen and (min-width: 768px) {
-.werkwijzecard{
+/*.werkwijzecard{
     height: 360px;
-}
-.kwaliteitswaarborgencard{
-    height: 630px;
-}
-.partnerscard{
+}*/
+/*.partnerscard{
     height: 432px;
-}
+}*/
 
 
 }
@@ -25,4 +22,9 @@
 
 .partnerscard{
     max-height: 20vh;
+}
+
+.my-flex-card > div > div.card {
+    height: calc(100% - 15px);
+    margin-bottom: 15px;
 }
