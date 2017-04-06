@@ -1,11 +1,11 @@
 /* YOUR CUSTOM STYLES */
-@media  only screen and (max-width: 480px) /* Phone */ {
+@media  only screen and (min-width: 320px) /* Phone */ {
     .logo{
         max-width: 80%;
     }
 }
 
-@media only screen and (min-width: 768px) /* Tablet */ {
+@media only screen and (min-width: 600px) /* Tablet */ {
     .logo{
         max-width: 45%;
     }
