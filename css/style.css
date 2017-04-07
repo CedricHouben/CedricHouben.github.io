@@ -35,6 +35,10 @@
     height: -moz-calc(100% - 15px);
     height: calc(100% - 15px);
     margin-bottom: 15px;
+    
+}
+.card{
+    margin-bottom: 15px;
 }
 
 
