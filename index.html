@@ -1,767 +1,509 @@
+<?php 
+if(isset($_POST['submit'])){
+    $to = "cedric.houben@live.nl"; // this is your Email address
+    $from = $_POST['email']; // this is the sender's Email address
+    $name = $_POST['name'];
+    $subject = $_POST['onderwerp'];
+    $subject2 = "Copy of your form submission";
+    $message = $name . " wrote the following:" . "\n\n" . $_POST['tekst'];
+    $message2 = "Here is a copy of your message " . $name . "\n\n" . $_POST['tekst'];
+
+    $headers = "From:" . $from;
+    $headers2 = "From:" . $to;
+    mail($to,$subject,$message,$headers);
+    mail($from,$subject2,$message2,$headers2); // sends a copy of the message to the sender
+    echo "Mail Sent. Thank you " . $first_name . ", we will contact you shortly.";
+    // You can also use header('Location: thank_you.php'); to redirect to another page.
+    }
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 
 <head>
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1.0, user-scalable=no" />
+  <title>Frank Bastiaans Assurantiën</title>
 
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <meta http-equiv="x-ua-compatible" content="ie=edge">
-    <meta name="format-detection" content="telephone=no">
+  <!-- CSS  -->
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+  <link href="css/materialize.css" type="text/css" rel="stylesheet" media="screen,projection" />
+  <link href="css/style.css" type="text/css" rel="stylesheet" media="screen,projection" />
 
-    <title>Eddy Houben Verzekeringen</title>
-
-    <!-- Font Awesome -->
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.0/css/font-awesome.min.css">
-
-    <!-- Bootstrap core CSS -->
-    <link href="css/bootstrap.min.css" rel="stylesheet">
-
-    <!-- Material Design Bootstrap -->
-    <link href="css/mdb.min.css" rel="stylesheet">
-
-    <!-- Style.css -->
-    <link href="css/style.css" rel="stylesheet">
-
-    <!--Favicons-->
-    <link rel="apple-touch-icon" sizes="57x57" href="./apple-icon-57x57.png">
-    <link rel="apple-touch-icon" sizes="60x60" href="./apple-icon-60x60.png">
-    <link rel="apple-touch-icon" sizes="72x72" href="./apple-icon-72x72.png">
-    <link rel="apple-touch-icon" sizes="76x76" href="./apple-icon-76x76.png">
-    <link rel="apple-touch-icon" sizes="114x114" href="./apple-icon-114x114.png">
-    <link rel="apple-touch-icon" sizes="120x120" href="./apple-icon-120x120.png">
-    <link rel="apple-touch-icon" sizes="144x144" href="./apple-icon-144x144.png">
-    <link rel="apple-touch-icon" sizes="152x152" href="./apple-icon-152x152.png">
-    <link rel="apple-touch-icon" sizes="180x180" href="./apple-icon-180x180.png">
-    <link rel="icon" type="image/png" sizes="192x192" href="./android-icon-192x192.png">
-    <link rel="icon" type="image/png" sizes="32x32" href="./favicon-32x32.png">
-    <link rel="icon" type="image/png" sizes="96x96" href="./favicon-96x96.png">
-    <link rel="icon" type="image/png" sizes="16x16" href="./favicon-16x16.png">
-    <link rel="manifest" href="./manifest.json">
-    <meta name="msapplication-TileColor" content="#ffffff">
-    <meta name="msapplication-TileImage" content="./ms-icon-144x144.png">
-    <meta name="theme-color" content="#ffffff">
-
-    <!-- Template styles -->
-    <style>
-        /* TEMPLATE STYLES */
-        
-        html,
-        body,
-        .view {
-            height: 100%
-        }
-        /* Navigation*/
-        
-        .navbar {
-            background-color: transparent;
-        }
-        
-        .scrolling-navbar {
-            -webkit-transition: background .5s ease-in-out, padding .5s ease-in-out;
-            -moz-transition: background .5s ease-in-out, padding .5s ease-in-out;
-            -o-transition: background .5s ease-in-out, padding .5s ease-in-out;
-            transition: background .5s ease-in-out, padding .5s ease-in-out;
-            /* Enable hardware acceleration to fix laggy transitions */
-            -webkit-transform: translateZ(0);
-            -moz-transform: translateZ(0);
-            -ms-transform: translateZ(0);
-            -o-transform: translateZ(0);
-            transform: translateZ(0);
-            -webkit-transform: translateX(0);
-            -moz-transform: translateX(0);
-            -ms-transform: translateX(0);
-            -o-transform: translateX(0);
-            transform: translateX(0);
-        }
-        
-        .top-nav-collapse {
-            background-color: #01C1B4;
-        }
-        
-        footer.page-footer {
-            background-color: #01C1B4;
-            margin-top: 2rem;
-        }
-        
-        @media only screen and (max-width: 990px) {
-            .navbar {
-                background-color: #01C1B4;
-            }
-        }
-        /*Call to action*/
-        
-        .flex-center {
-            color: #fff;
-        }
-        
-        .view {
-            background: url("./img/background.jpg")no-repeat center;
-            /*center fixed*/
-            -webkit-background-size: cover;
-            -moz-background-size: cover;
-            -o-background-size: cover;
-            background-size: cover;
-        }
-        /*Contact section*/
-        
-        #contact .fa {
-            font-size: 2.5rem;
-            margin-bottom: 1rem;
-            color: #1C2331;
-        }
-    </style>
-
+  <!-- Favicon -->
+  <link rel="apple-touch-icon" sizes="57x57" href="./apple-icon-57x57.png">
+  <link rel="apple-touch-icon" sizes="60x60" href="./apple-icon-60x60.png">
+  <link rel="apple-touch-icon" sizes="72x72" href="./apple-icon-72x72.png">
+  <link rel="apple-touch-icon" sizes="76x76" href="./apple-icon-76x76.png">
+  <link rel="apple-touch-icon" sizes="114x114" href="./apple-icon-114x114.png">
+  <link rel="apple-touch-icon" sizes="120x120" href="./apple-icon-120x120.png">
+  <link rel="apple-touch-icon" sizes="144x144" href="./apple-icon-144x144.png">
+  <link rel="apple-touch-icon" sizes="152x152" href="./apple-icon-152x152.png">
+  <link rel="apple-touch-icon" sizes="180x180" href="./apple-icon-180x180.png">
+  <link rel="icon" type="image/png" sizes="192x192" href="./android-icon-192x192.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="./favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="96x96" href="./favicon-96x96.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="./favicon-16x16.png">
+  <link rel="manifest" href="./manifest.json">
+  <meta name="msapplication-TileColor" content="#ffffff">
+  <meta name="msapplication-TileImage" content="./ms-icon-144x144.png">
+  <meta name="theme-color" content="#ffffff">
 </head>
 
 <body>
+  <ul id="dropdown1" class="dropdown-content">
+    <li class="nav-item">
+      <a class="nav-link" href="#Zakelijk">Zakelijk</a>
+    </li>
+    <li class="divider"></li>
+    <li class="nav-item">
+      <a class="nav-link" href="#Particulier">Particulier</a>
+    </li>
+    <li class="divider"></li>
+    <li class="nav-item">
+      <a class="nav-link" href="#Partners">Partners</a>
+    </li>
+    <li class="divider"></li>
+    <li class="nav-item">
+      <a class="nav-link" href="#Documenten">Documenten</a>
+    </li>
+    <li class="divider"></li>
+    <li class="nav-item">
+      <a class="nav-link" href="#Contact">Contact</a>
+    </li>
+  </ul>
+  <div class="navbar-fixed">
+    <nav class="white" role="navigation">
+      <div class="nav-wrapper container">
+        <a id="logo-container" href="#" class="brand-logo">
+          <img id="logo-img" src="./img/frankb-logo.png">
+        </a>
+        <ul class="right hide-on-med-and-down">
+          <li class="nav-item">
+            <a class="nav-link" href="#">Home</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#Over mij">Over mij</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#Werkwijze">Werkwijze</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#Kwaliteitswaarborgen">Kwaliteitswaarborgen</a>
+          </li>
+          <!-- Dropdown Trigger -->
+          <li><a class="dropdown-button" href="#!" data-activates="dropdown1">Meer links<i class="material-icons right">arrow_drop_down</i></a></li>
+        </ul>
 
-    <!--Navbar-->
-    <nav class="navbar navbar-toggleable-md navbar-dark fixed-top scrolling-navbar">
-        <div class="container">
-            <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarNav1" aria-controls="navbarNav1"
-                aria-expanded="false" aria-label="Toggle navigation">
-                <span class="navbar-toggler-icon"></span>
-            </button>
-            <a class="navbar-brand" href="#">
-                <!--<img style="max-width:150px; margin-top: -7px;" src="./img/LogoEddyHoubenVerzekeringen.jpg">-->
-                <strong>Eddy Houben Verzekeringen</strong>
-            </a>
-            <div class="collapse navbar-collapse" id="navbarNav1">
-                <ul class="navbar-nav mr-auto">
-                    <li class="nav-item">
-                        <a class="nav-link" href="#Over mij">Home<span class="sr-only">(current)</span></a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="#Werkwijze">Werkwijze</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="#Kwaliteitswaarborgen">Kwaliteitswaarborgen</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="#Zakelijk">Zakelijk</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="#Particulier">Particulier</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="#Partners">Partners</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="#Documenten">Documenten</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="#Contact">Contact</a>
-                    </li>
-                </ul>
-
-            </div>
-        </div>
+        <ul id="nav-mobile" class="side-nav">
+          <li class="nav-item">
+            <a class="nav-link" href="#">Home</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#Over mij">Over mij</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#Werkwijze">Werkwijze</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#Kwaliteitswaarborgen">Kwaliteitswaarborgen</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#Zakelijk">Zakelijk</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#Particulier">Particulier</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#Partners">Partners</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#Documenten">Documenten</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#Contact">Contact</a>
+          </li>
+        </ul>
+        <a href="#" data-activates="nav-mobile" class="button-collapse"><i class="material-icons">menu</i></a>
+      </div>
     </nav>
-    <!--/.Navbar-->
-
-    <!--Mask-->
-    <div class="view hm-black-strong">
-        <div class="full-bg-img flex-center">
-            <ul>
-                <li>
-                    <img class="logo img-thumbnail img-fluid rounded mx-auto d-block" src="./img/LogoEddyHoubenVerzekeringen.jpg">
-                </li>
-                <li>
-                    <a href="#Over mij" class="btn btn-default btn-lg wow fadeInLeft" data-wow-delay="0.2s">Over mij</a>
-                    <a href="#Contact" class="btn btn-default btn-lg wow fadeInRight" data-wow-delay="0.2s">Contact</a>
-                </li>
-            </ul>
+  </div>
+  <div id="index-banner" class="slider fullscreen">
+    <ul class="slides">
+      <li>
+        <img class="img-responsive" id="slider-img" src="./img/panoramamaastricht.jpg">
+        <!-- random image -->
+        <div class="caption center-align">
+          <img class="img-responsive" id="slider-logo" src="./img/frankb-logo.png">
+          <h5 class="light grey-text text-lighten-3">Welkom bij Frank Bastiaans Assurantiën</h5>
+          <a class="waves-effect waves-light btn-large">Contact</a>
         </div>
-    </div>
-    <!--/.Mask-->
+      </li>
+      <li>
+        <img class="img-responsive" id="slider-img" src="./img/maastrichtbrug.jpg">
+        <!-- random image -->
+        <div class="caption left-align">
+          <img class="img-responsive" id="slider-logo" src="./img/frankb-logo.png">
+          <h5 class="light grey-text text-lighten-3">Welkom bij Frank Bastiaans Assurantien</h5>
+          <a class="waves-effect waves-light btn-large">Contact</a>
+        </div>
+      </li>
+      <li>
+        <img class="img-responsive" id="slider-img" src="./img/snelweg.jpeg">
+        <!-- random image -->
+        <div class="caption right-align">
+          <img class="img-responsive" id="slider-logo" src="./img/frankb-logo.png">
+          <h5 class="light grey-text text-lighten-3">Welkom bij Frank Bastiaans Assurantien</h5>
+          <a class="waves-effect waves-light btn-large">Contact</a>
+        </div>
+      </li>
+    </ul>
+  </div>
 
-    <!-- Main container-->
-    <div class="container">
-        <section id="Over mij">
-            <div class="divider-new">
-                <h2 class="h2-responsive wow bounceIn">Over mij</h2>
-            </div>
-            <!--Section: Over mij-->
-            <section class="wow fadeIn" data-wow-delay="0.2s">
-                <img class="img-thumbnail img-fluid aboutme rounded mx-auto d-block" src="./img/Overmij.jpg">
-            </section>
+  <div class="container">
+    <!--Over Mij-->
+    <div class="section" id="Over mij">
+
+      <!--   Icon Section   -->
+      <div class="row">
+        <div class="col s12 m12">
+          <div class="icon-block">
+            <h2 class="center light-blue-text"><i class="material-icons">person_pin_circle</i></h2>
+            <h5 class="center">Over mij</h5>
             <hr>
-            <section class="text-center wow bounceIn" data-wow-delay="0.2s">
-
-                <p>Als ervaren verzekeringsadviseur staat Eddy Houben garant voor een deskundig en onafhankelijk advies in begrijpelijke
-                    taal. Zo'n advies geef ik u graag in een gesprek. Geen doorverwijzing naar internet of naar een callcenter.
-                    In de huidige tendens van schaalvergroting, fusies en overnames met als gevolg steeds minder personeel,
-                    zie ik een steeds grotere afstand ontstaan tussen klant en dienstverlener. De klant staat niet meer centraal
-                    en heeft vaak geen vast aanspreekpunt. Verzekeringen is een vak apart en een klant verdient een persoonlijk
-                    en vakkundig op maat gesneden advies.</p>
-                <p>Kenmerkend voor mij is de grote betrokkenheid bij de klanten waarbij een persoonlijke benadering voorop staat.
-                    Goed en persoonlijk contact met mijn klanten zodat ik weet waar zij behoefte aan hebben en kennis van
-                    zaken, dat is wat ik mijn klanten graag wil bieden. Hierbij streef ik naar een langdurige relatie op
-                    basis van vertrouwen.</p>
-                <p>Graag wil ik tijdens een gesprek uw verzekeringsbehoefte of huidige verzekeringspakket samen met u inventariseren
-                    en u vervolgens een onafhankelijke verzekeringsoplossing op maat aanbieden. Uiteraard staan prijs, kwaliteit
-                    en service daarbij hoog in het vaandel.</p>
-
-            </section>
-        </section>
-        <!--Section: Over mij-->
-        <section id="Werkwijze">
-            <div class="divider-new">
-                <h2 class="h2-responsive wow fadeInDown">Werkwijze</h2>
-            </div>
-
-            <!--Section: Werkwijze-->
-
-            <div class="card-deck">
-
-                <!--First columnn-->
-                <!--Card-->
-                <div class="card wow fadeInUp">
-
-                    <!--Card content-->
-                    <div class="card-block text-center ">
-                        <!--Title-->
-                        <h4 class="card-title">Deskundigheid</h4>
-                        <hr>
-                        <!--Text-->
-                        <p class="card-text">Om u goed te adviseren, moet ik allereerst deskundig zijn. Ik moet weten welke financiële producten
-                            en verzekeringsproducten er zijn en welke voor- en nadelen ze hebben. Dat klinkt wellicht als
-                            een open deur, maar in een markt die snel kan veranderen, is deskundigheid niet vanzelfsprekend:
-                            ze vereist voortdurende inspanning. Naast een uitgebreide verzekeringsopleiding, zoals het Assurantie
-                            A en B diploma, volg ik periodiek de wettelijk verplichte Wet Financieel Toezicht Permanente
-                            Educatie Plus opleidingen. Ik ben op de hoogte van de actualiteit door diverse vakliteratuur
-                            zoals de wettelijk verplichte Permanent Actueel. </p>
-                    </div>
-                    <!--/.Card content-->
-
-                </div>
-                <!--/.Card-->
-
-                <!--First columnn-->
-                <!--Second columnn-->
-
-                <!--Card-->
-                <div class="card wow fadeInUp">
-
-                    <!--Card content-->
-                    <div class="card-block text-center ">
-                        <!--Title-->
-                        <h4 class="card-title">Persoonlijk contact</h4>
-                        <hr>
-                        <!--Text-->
-                        <p class="card-text">is een essentieel onderdeel van mijn manier van werken. Ik ken mijn klanten en ga periodiek bij hen
-                            langs, thuis of op de zaak. Ik verwijs u dus niet naar internet of naar een callcenter.</p>
-                    </div>
-                    <!--/.Card content-->
-
-                </div>
-                <!--/.Card-->
-
-                <!--Second columnn-->
-            </div>
-            <div class="card-deck">
-                <!--Third columnn-->
-
-                <!--Card-->
-                <div class="card wow fadeInUp" data-wow-delay="0.4s">
-
-                    <!--Card content-->
-                    <div class="card-block text-center ">
-                        <!--Title-->
-                        <h4 class="card-title">Inventariseren</h4>
-                        <hr>
-                        <!--Text-->
-                        <p class="card-text">Met behulp van een risico-inventarisatieformulier bespreek ik samen de te lopen risico’s en wensen
-                            met u. Vervolgens bepalen we samen welke risico’s u zelf kunt dragen, op andere manieren op kunt
-                            vangen of wenst te verzekeren?</p>
-                    </div>
-                    <!--/.Card content-->
-
-                </div>
-                <!--/.Card-->
-
-                <!--Third columnn-->
-
-                <!--Fourth columnn-->
-
-                <!--Card-->
-                <div class="card wow fadeInUp" data-wow-delay="0.4s">
-
-                    <!--Card content-->
-                    <div class="card-block text-center ">
-                        <!--Title-->
-                        <h4 class="card-title">Onafhankelijk adviseren</h4>
-                        <hr>
-                        <!--Text-->
-                        <p class="card-text">Doordat Eddy Houben Verzekeringen niet gebonden is aan enige verzekeringsmaatschappij of financiële
-                            instelling, kan ik u werkelijk onafhankelijk advies geven. En bij dat advies houd ik niet alleen
-                            rekening met wat hier en nu kan, maar ook met mogelijke ontwikkelingen in de toekomst. Omdat
-                            ik graag wil dat u ook dan nog klant bij mij bent.</p>
-                    </div>
-                    <!--/.Card content-->
-
-                </div>
-                <!--/.Card-->
-
-                <!--Fourth columnn-->
-            </div>
-            <div class="card-deck">
-                <!--Fifth columnn-->
-
-                <!--Card-->
-                <div class="card wow fadeInUp" data-wow-delay="0.8s">
-
-                    <!--Card content-->
-                    <div class="card-block text-center ">
-                        <!--Title-->
-                        <h4 class="card-title">Bemiddelen</h4>
-                        <hr>
-                        <!--Text-->
-                        <p class="card-text">Nadat ik u een advies op maat gegeven heb en u akkoord bent met dit advies, ga ik de administratieve
-                            afhandeling met de verzekeraar voor u regelen.</p>
-                    </div>
-                    <!--/.Card content-->
-
-                </div>
-                <!--/.Card-->
-
-                <!--Fifth columnn-->
-                <!--Sixed columnn-->
-
-                <!--Card-->
-                <div class="card wow fadeInUp">
-
-                    <!--Card content-->
-                    <div class="card-block text-center" data-wow-delay="0.8s">
-                        <!--Title-->
-                        <h4 class="card-title">Nazorg</h4>
-                        <hr>
-                        <!--Text-->
-                        <p class="card-text">Uw situatie is aan verandering onderhevig. Uiteraard is het dan ook belangrijk dat uw verzekeringspakket
-                            – indien nodig – hieraan aangepast wordt. Met behulp van het eerder ingevulde risico-inventarisatieformulier
-                            bespreken we periodiek uw actuele situatie zodat uw verzekeringspakket up-to-date blijft. Dit
-                            voorkomt teleurstellingen bij een eventuele schade. In geval van een schade begeleid ik u en
-                            zorg ik voor de correspondentie met de verzekeraar.</p>
-                    </div>
-                    <!--/.Card content-->
-
-                </div>
-                <!--/.Card-->
-
-                <!--Sixed columnn-->
-
-                <!--Seventh columnn-->
-
-                <!--Card-->
-                <div class="card wow fadeInUp" data-wow-delay="0.8s">
-
-                    <!--Card content-->
-                    <div class="card-block text-center ">
-                        <!--Title-->
-                        <h4 class="card-title">Maatwerk</h4>
-                        <hr>
-                        <!--Text-->
-                        <p class="card-text">Er zijn heel veel verzekeringsproducten en heel veel financiële producten. Ik wijs u de weg en zorg
-                            ervoor dat u datgene krijgt wat u in uw specifieke situatie nodig heeft – niets meer en niets
-                            minder.</p>
-                    </div>
-                    <!--/.Card content-->
-
-                </div>
-                <!--/.Card-->
-
-                <!--Seventh columnn-->
-            </div>
-
-        </section>
-        <!--/Section: Werkwijze-->
-        <section id="Kwaliteitswaarborgen">
-            <div class="divider-new">
-                <h2 class="h2-responsive wow fadeInDown">Kwaliteitswaarborgen</h2>
-            </div>
-
-            <!--Section: Kwaliteitswaarborgen-->
-
-
-            <div class="card-deck">
-
-                <!--First columnn-->
-
-                <!--Card-->
-                <div class="card hoverable wow fadeInUp ">
-                    <a href="https://www.afm.nl" target="_blank">
-
-                        <!--Card image-->
-                        <div class="overlay hm-white-slight">
-                            <img src="./img/afm.png" class="img-fluid mx-auto d-block" alt="">
-                        </div>
-                        <!--/.Card image-->
-
-                        <!--Card content-->
-                        <div class="card-block text-center">
-                            <!--Title-->
-                            <h4 class="card-title">Autoriteit Financiële Markten</h4>
-                            <hr>
-                            <!--Text-->
-                            <p class="card-text">De AFM voert de Wet financieel toezicht (Wft) uit en houdt toezicht op de deskundigheid en integriteit
-                                van de dienstverlening van financiële adviseurs. Mijn kantoor is bij de AFM geregistreerd
-                                en heeft een wettelijke vergunning om te adviseren en te bemiddelen in financiële diensten.</p>
-                        </div>
-                        <!--/.Card content-->
-                    </a>
-                </div>
-                <!--/.Card-->
-
-                <!--First columnn-->
-
-                <!--Second columnn-->
-
-                <!--Card-->
-                <div class="card hoverable wow fadeInUp " data-wow-delay="0.2s">
-                    <a href="https://www.kifid.nl" target="_blank">
-
-                        <!--Card image-->
-                        <div class="overlay hm-white-slight">
-                            <img src="./img/KiFiD.png" class="img-fluid mx-auto d-block" alt="">
-                        </div>
-                        <!--/.Card image-->
-
-                        <!--Card content-->
-                        <div class="card-block text-center">
-                            <!--Title-->
-                            <h4 class="card-title">KiFiD</h4>
-                            <hr>
-                            <!--Text-->
-                            <p class="card-text">Mijn kantoor besteedt voortdurend grote zorg aan de kwaliteit van onze dienstverlening. Toch
-                                kan het voorkomen dat u niet tevreden bent. Als dat zo is hoor ik dat graag van u, want klachten
-                                over mijn dienstverlening neem ik zéér serieus. Zo heb ik een interne klachtenprocedure,
-                                ben ik aangesloten bij het Klachteninstituut Financiële Dienstverlening (KiFiD) en onderschrijf
-                                ik het reglement.</p>
-                        </div>
-                        <!--/.Card content-->
-                    </a>
-                </div>
-                <!--/.Card-->
-
-
-                <!--Second columnn-->
-            </div>
-            <div class="card-deck">
-                <!--Third columnn-->
-
-                <!--Card-->
-                <div class="card hoverable wow fadeInUp " data-wow-delay="0.4s">
-                    <a href="http://www.raia.nl/registers/personenregister/?registration_no=0475" target="_blank">
-                        <!--Card image-->
-                        <div class="overlay hm-white-slight">
-                            <img src="./img/RAIA.png" class="img-fluid mx-auto d-block" alt="">
-                        </div>
-                        <!--/.Card image-->
-
-                        <!--Card content-->
-                        <div class="card-block text-center">
-                            <!--Title-->
-                            <h4 class="card-title">RAiA-register</h4>
-                            <hr>
-                            <!--Text-->
-                            <p class="card-text">
-                                <p>Ik sta ingeschreven in het RAiA-register als Registeradviseur in Assurantiën. Professionaliteit,
-                                    deskundigheid, integriteit en onafhankelijkheid. Dat zijn de kernwaarden van de Registeradviseur
-                                    in Assurantiën, RAiA. De RAiA kiest ervoor om zich kwalitatief te onderscheiden in zijn
-                                    dienstverlening naar de consument en verder te gaan dan de wettelijke vereisten met betrekking
-                                    tot de kennis en deskundigheid. Het doel van de RAiA is om u kwaliteit te bieden in zijn
-                                    persoonlijke financieel advies.
-                                </p>
-                                <p> Voor een deskundig en professioneel verzekeringsadvies gaat u naar de Registeradviseur in
-                                    Assurantiën. Deskundigheid is een belangrijk onderdeel van de voorwaarden voor de RAiA-erkenning.
-                                    De eisen waaraan de RAiA moet voldoen, gaan verder dan de Wet op het financieel toezicht
-                                    en hebben zowel betrekking op vakinhoudelijke kennis als op gedrag.</p>
-                            </p>
-
-                        </div>
-                        <!--/.Card content-->
-                    </a>
-                </div>
-                <!--/.Card-->
-
-                <!--Third columnn-->
-
-                <!--Fourth columnn-->
-
-                <!--Card-->
-
-                <div class="card hoverable wow fadeInUp " data-wow-delay="0.6s">
-                    <a href="http://www.ebregister.nl/" target="_blank">
-                        <!--Card image-->
-                        <div class="overlay hm-white-slight">
-                            <img src="./img/av.jpg" class="img-fluid mx-auto d-block" alt="">
-                        </div>
-                        <!--/.Card image-->
-
-                        <!--Card content-->
-                        <div class="card-block text-center">
-                            <!--Title-->
-                            <h4 class="card-title">Employee Benefits Register</h4>
-                            <hr>
-                            <!--Text-->
-                            <p class="card-text">
-                                <p>Ik sta ingeschreven in het Employee Benefits Register als Registeradviseur Verzuim- en Inkomensmanagement
-                                    (RVI).
-                                </p>
-                                <p>In 2003 ontwikkelde Avans+/ Instituut Scire twee opleidingen op het gebied van Employee Benefits
-                                    (EB). Avans+/ Instituut Scire reageerde daarmee op een behoefte vanuit de markt naar
-                                    gespecialiseerde EB- adviseurs. Dit register wil graag een bijdrage leveren aan de kwaliteitsverbetering
-                                    en kwaliteitsborging van EB- adviseurs en verzuimspecialisten.</p>
-                                <p>Adviseurs geregistreerd in dit register, zijn in staat Employee Benefits en/ of Verzuim adviezen
-                                    te geven op het hoogste kwaliteitsniveau. Wanneer u gebruik wilt maken van de diensten
-                                    van een adviseur, kunt u hier op naam of locatie zoeken.</p>
-                            </p>
-
-                        </div>
-                    </a>
-                    <!--/.Card content-->
-
-                </div>
-                <!--/.Card-->
-
-                <!--Fourth columnn-->
-            </div>
-
-        </section>
-        <!--/Section: Kwaliteitswaarborgen-->
-
-        <section id="Zakelijk">
-            <div class="divider-new">
-                <h2 class="h2-responsive wow bounceIn">Zakelijk</h2>
-            </div>
-
-            <!--Section: Zakelijk-->
-            <section class="text-center wow bounceIn" data-wow-delay="0.2s">
-
-                <p>Tijd en aandacht is nodig om uw bedrijf te runnen. Mijn missie is daarom uw bedrijf tijd en energie te besparen
-                    door u met aandacht te ondersteunen en te begeleiden op het gebied van zakelijke schade- en inkomensverzekeringen.
-                    Risico’s nemen hoort bij het ondernemen. Hierbij staat natuurlijk wel de continuïteit van uw bedrijf
-                    voorop. Ik bepaal samen met u of verzekeren verstandig is door de risico’s te bespreken. Ik help u graag
-                    om schade zo veel mogelijk te voorkomen en slim om te gaan met de risico’s.</p>
-                <p>Ik begin altijd met een risico-inventarisatie waarbij de risico’s en uw wensen naar voren komen. Met deze
-                    QuickScan krijgen we snel inzicht. Naast advisering op het gebied van verzekeringsoplossingen (zakelijke
-                    schadeverzekeringen en verzuim- en arbeidsongeschiktheidsverzekeringen) breng ik dus de risico’s in beeld
-                    en geef ik advies op het gebied van preventie en andere mogelijkheden om bedreigingen te minimaliseren
-                    of geheel te voorkomen. Vervolgens ontvangt u een advies op maat waarmee we op zoek gaan naar een geschikte
-                    verzekeraar.
-                </p>
-                <p>Nadat de verzekeringen afgesloten zijn, vind ik het heel erg belangrijk dat er periodiek onderhoud op uw
-                    verzekeringsportefeuille gepleegd wordt. Hierbij is er aandacht voor o.a. verzekerde bedragen en voor
-                    de van toepassing zijnde clausules. Dit allemaal met het doel om een evt. discussie in geval van schade
-                    te voorkomen.</p>
-
-            </section>
-        </section>
-        <!--Section: Zakelijk-->
-
-        <section id="Particulier">
-            <div class="divider-new">
-                <h2 class="h2-responsive wow bounceIn">Particulier</h2>
-            </div>
-
-            <!--Section: Particulier-->
-            <section class="text-center wow bounceIn" data-wow-delay="0.2s">
-
-                <p>Indien u persoonlijk contact met een vaste lokale verzekeringsadviseur belangrijk vindt, wil ik graag de
-                    particuliere verzekeringen voor u regelen. Niet alleen op het gebied van het adviseren en afsluiten van
-                    verzekeringen maar ook het periodiek onderhouden c.q. bespreken van uw particuliere verzekeringspakket,
-                    wil ik u graag van dienst zijn. Hierbij streef ik ernaar om een en ander zoveel mogelijk in een pakketvorm
-                    te regelen wat meerdere voordelen voor u oplevert. Deze voordelen bespreek ik graag in een persoonlijk
-                    gesprek met u.</p>
-
-            </section>
-        </section>
-        <!--Section: Particulier-->
-
-
-        <section id="Partners">
-            <div class="divider-new">
-                <h2 class="h2-responsive wow bounceIn">Partners</h2>
-            </div>
-
-            <!--Section: Partners-->
-            <section class="text-center wow bounceIn" data-wow-delay="0.2s">
-
-                <p>Eddy Houben Verzekeringen bemiddelt voor nagenoeg alle, in Nederland, actieve verzekeraars. Hiervoor wordt
-                    samengewerkt met de lokale serviceprovider BSB Volmachten te Geleen en met Nedasco te Amersfoort.</p>
-
-            </section>
-            <div class="card-deck">
-
-                <!--First columnn-->
-
-                    <!--Card-->
-                    <div class="card hoverable wow fadeInUp">
-                        <a href="http://www.bsbvolmachten.nl/" target="_blank">
-                            <!--Card image-->
-                            <div class="overlay hm-white-slight">
-                                <img src="./img/BSB.jpg" class="img-fluid mx-auto d-block partnerscard" alt="">
-                            </div>
-                            <!--/.Card image-->
-
-                            <!--Card content-->
-                            <div class="card-block text-center">
-                                <!--Title-->
-                                <h4 class="card-title">BSB Volmachten</h4>
-                            </div>
-                            <!--/.Card content-->
-                        </a>
-                    </div>
-                    <!--/.Card-->
-
-                <!--First columnn-->
-
-                <!--Second columnn-->
-
-                    <!--Card-->
-                    <div class="card hoverable wow fadeInUp" data-wow-delay="0.2s">
-                        <a href="https://www.nedasco.nl/" target="_blank">
-                            <!--Card image-->
-                            <div class="overlay hm-white-slight">
-                                <img src="./img/nedasco.jpg" class="img-fluid mx-auto d-block partnerscard" alt="">
-                            </div>
-                            <!--/.Card image-->
-
-                            <!--Card content-->
-                            <div class="card-block text-center">
-                                <!--Title-->
-                                <h4 class="card-title">Nedasco Verzekeringen</h4>
-                            </div>
-                            <!--/.Card content-->
-                        </a>
-                    </div>
-                    <!--/.Card-->
-
-                <!--Second columnn-->
-        </section>
-        <!--Section: Partners-->
-
-
-        <section id="Documenten">
-            <div class="divider-new">
-                <h2 class="h2-responsive wow bounceIn">Documenten</h2>
-            </div>
-
-            <!--Section: Documenten-->
+            <p class="light">By utilizing elements and principles of Material Design, we were able to create a framework that incorporates
+              components and animations that provide more feedback to users. Additionally, a single underlying responsive
+              system across all platforms allow for a more unified user experience.</p>
+          </div>
+        </div>
+      </div>
+
+    </div>
+
+    <!--Werkwijze-->
+    <div class="section" id="Werkwijze">
+
+      <!--   Icon Section   -->
+      <div class="row">
+        <div class="col s12 m12">
+          <div class="icon-block">
+            <h5 class="center">Werkwijze</h5>
+            <hr>
             <div class="row">
-                <div class="col-lg-6">
-                    <ul class="">
-                        <li class="wow fadeInUp" data-wow-delay="0.2s"><i class="fa fa-cloud-download teal-text"></i>
-                            <a href="./docs/Risicos.pdf" target="_blank"> Dienstverleningsdocument Risico's afdekken</a>
-                        </li>
-                        <li class="wow fadeInUp" data-wow-delay="0.3s"><i class="fa fa-cloud-download teal-text"></i>
-                            <a href="./docs/vermogen.pdf" target="_blank"> Dienstverleningsdocument Vermogen opbouwen</a>
-                        </li>
-                        <li class="wow fadeInUp" data-wow-delay="0.4s"><i class="fa fa-cloud-download teal-text"></i>
-                            <a href="./docs/Broch_afm.pdf" target="_blank"> Brochure van de AFM: Een financiële klacht?</a>
-                        </li>
-                    </ul>
+              <div class="col s12 m6">
+                <div class="card medium blue lighten-1">
+                  <div class="card-content white-text">
+                    <span class="card-title">Deskundigheid</span>
+                    <p>Om u goed te adviseren, moet ik allereerst deskundig zijn. Ik moet weten welke financiële producten en
+                      verzekeringsproducten er zijn en welke voor- en nadelen ze hebben. Dat klinkt wellicht als een open
+                      deur, maar in een markt die snel kan veranderen, is deskundigheid niet vanzelfsprekend: ze vereist
+                      voortdurende inspanning. Naast een uitgebreide verzekeringsopleiding, zoals het Assurantie A en B diploma,
+                      volg ik periodiek de wettelijk verplichte Wet Financieel Toezicht Permanente Educatie Plus opleidingen.
+                      Ik ben op de hoogte van de actualiteit door diverse vakliteratuur zoals de wettelijk verplichte Permanent
+                      Actueel.
+                    </p>
+                  </div>
                 </div>
-                <div class="col-lg-6">
-                    <ul class="">
-                        <li class="wow fadeInUp" data-wow-delay="0.5s"><i class="fa fa-cloud-download teal-text"></i>
-                            <a href="./docs/schadeformulier%20algemeen_pen.pdf" target="_blank"> Schadeaangifteformulier Algemeen</a>
-                        </li>
-                        <li class="wow fadeInUp" data-wow-delay="0.6s"><i class="fa fa-cloud-download teal-text"></i>
-                            <a href="./docs/schadeformulier%20algemeen_dig.pdf" target="_blank"> Schadeaangifteformulier Algemeen (digitaal in te vullen)</a>
-                        </li>
-                        <li class="wow fadeInUp" data-wow-delay="0.7s"><i class="fa fa-cloud-download teal-text"></i>
-                            <a href="./docs/schadeformulier%20verkeer.pdf" target="_blank"> Schadeaangifteformulier verkeer (Aanrijdingsformulier)</a>
-                        </li>
-                        <li class="wow fadeInUp" data-wow-delay="0.8s"><i class="fa fa-cloud-download teal-text"></i>
-                            <a href="./docs/formulierenset%20Waarborgfonds%20Motorverkeer.pdf" target="_blank"> Formulierenset Waarborgfonds Motorverkeer</a>
-                        </li>
-                    </ul>
-                    <div class="col-lg-6">
+              </div>
+              <div class="col s12 m6">
+                <div class="card medium blue lighten-1">
+                  <div class="card-content white-text">
+                    <span class="card-title">Persoonlijk contact</span>
+                    <p>is een essentieel onderdeel van mijn manier van werken. Ik ken mijn klanten en ga periodiek bij hen langs,
+                      thuis of op de zaak. Ik verwijs u dus niet naar internet of naar een callcenter.</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col s12 m6">
+                <div class="card small blue lighten-1">
+                  <div class="card-content white-text">
+                    <span class="card-title">Inventariseren</span>
+                    <p>Met behulp van een risico-inventarisatieformulier bespreek ik samen de te lopen risico’s en wensen met
+                      u. Vervolgens bepalen we samen welke risico’s u zelf kunt dragen, op andere manieren op kunt vangen
+                      of wenst te verzekeren?</p>
+                  </div>
+                </div>
+              </div>
+              <div class="col s12 m6">
+                <div class="card small blue lighten-1">
+                  <div class="card-content white-text">
+                    <span class="card-title">Onafhankelijk adviseren</span>
+                    <p>Doordat Eddy Houben Verzekeringen niet gebonden is aan enige verzekeringsmaatschappij of financiële instelling,
+                      kan ik u werkelijk onafhankelijk advies geven. En bij dat advies houd ik niet alleen rekening met wat
+                      hier en nu kan, maar ook met mogelijke ontwikkelingen in de toekomst. Omdat ik graag wil dat u ook
+                      dan nog klant bij mij bent.</p>
+                  </div>
+                </div>
+              </div>
+            </div>
 
-                    </div>
-        </section>
-        <!--Section: Documenten-->
-
-        <div class="divider-new">
-            <h2 class="h2-responsive wow fadeInUp">Contact</h2>
+            <div class="row">
+              <div class="col s12 m4">
+                <div class="card medium blue lighten-1">
+                  <div class="card-content white-text">
+                    <span class="card-title">Bemiddelen</span>
+                    <p>Nadat ik u een advies op maat gegeven heb en u akkoord bent met dit advies, ga ik de administratieve
+                      afhandeling met de verzekeraar voor u regelen.</p>
+                  </div>
+                </div>
+              </div>
+              <div class="col s12 m4">
+                <div class="card medium blue lighten-1">
+                  <div class="card-content white-text">
+                    <span class="card-title">Nazorg</span>
+                    <p>Uw situatie is aan verandering onderhevig. Uiteraard is het dan ook belangrijk dat uw verzekeringspakket
+                      – indien nodig – hieraan aangepast wordt. Met behulp van het eerder ingevulde risico-inventarisatieformulier
+                      bespreken we periodiek uw actuele situatie zodat uw verzekeringspakket up-to-date blijft. Dit voorkomt
+                      teleurstellingen bij een eventuele schade. In geval van een schade begeleid ik u en zorg ik voor de
+                      correspondentie met de verzekeraar.</p>
+                  </div>
+                </div>
+              </div>
+              <div class="col s12 m4">
+                <div class="card medium blue lighten-1">
+                  <div class="card-content white-text">
+                    <span class="card-title">Maatwerk</span>
+                    <p>Er zijn heel veel verzekeringsproducten en heel veel financiële producten. Ik wijs u de weg en zorg ervoor
+                      dat u datgene krijgt wat u in uw specifieke situatie nodig heeft – niets meer en niets minder.
+                    </p>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
         </div>
+      </div>
+    </div>
+    <!--Kwaliteitswaarborgen-->
+    <div class="section" id="Kwaliteitswaarborgen">
 
-        <!--Section: Contact-->
-        <section id="Contact">
-            <div class="col-md-12">
-                <ul class="text-center">
-                    <li class="wow fadeInUp" data-wow-delay="0.2s"><i class="fa fa-map-marker teal-text"></i>
-                        <address>Eddy Houben Verzekeringen<br>Postbus 15<br>6300 AA Valkenburg LB</address>
-                    </li>
+      <div class="row">
+        <div class="col s12 m12">
+          <div class="icon-block">
+            <h5 class="center">Kwaliteitswaarborgen</h5>
+            <hr>
+          </div>
+        </div>
+        <div class="col s12 m6">
+          <div class="card">
+            <div class="card-image waves-effect waves-block waves-light">
+              <img class="activator kwaliteits-img" src="img/afm.png">
+            </div>
+            <div class="card-content">
+              <span class="card-title activator grey-text text-darken-4">AFM<i class="material-icons right">more_vert</i></span>
+            </div>
+            <div class="card-reveal">
+              <span class="card-title grey-text text-darken-4">AFM<i class="material-icons right">close</i></span>
+              <p>De AFM voert de Wet financieel toezicht (Wft) uit en houdt toezicht op de deskundigheid en integriteit van
+                de dienstverlening van financiële adviseurs. Mijn kantoor is bij de AFM geregistreerd en heeft een wettelijke
+                vergunning om te adviseren en te bemiddelen in financiële diensten.</p>
+            </div>
+          </div>
+        </div>
+        <div class="col s12 m6">
+          <div class="card">
+            <div class="card-image waves-effect waves-block waves-light">
+              <img class="activator kwaliteits-img" src="img/KiFiD.png">
+            </div>
+            <div class="card-content">
+              <span class="card-title activator grey-text text-darken-4">KiFiD<i class="material-icons right">more_vert</i></span>
+            </div>
+            <div class="card-reveal">
+              <span class="card-title grey-text text-darken-4">KiFiD<i class="material-icons right">close</i></span>
+              <p>Mijn kantoor besteedt voortdurend grote zorg aan de kwaliteit van onze dienstverlening. Toch kan het voorkomen
+                dat u niet tevreden bent. Als dat zo is hoor ik dat graag van u, want klachten over mijn dienstverlening
+                neem ik zéér serieus. Zo heb ik een interne klachtenprocedure, ben ik aangesloten bij het Klachteninstituut
+                Financiële Dienstverlening (KiFiD) en onderschrijf ik het reglement.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col s12 m6">
+          <div class="card">
+            <div class="card-image waves-effect waves-block waves-light">
+              <img class="activator kwaliteits-img" src="img/RAIA.png">
+            </div>
+            <div class="card-content">
+              <span class="card-title activator grey-text text-darken-4">RAiA-register<i class="material-icons right">more_vert</i></span>
+            </div>
+            <div class="card-reveal">
+              <span class="card-title grey-text text-darken-4">RAiA-register<i class="material-icons right">close</i></span>
+              <p>Ik sta ingeschreven in het RAiA-register als Registeradviseur in Assurantiën. Professionaliteit, deskundigheid,
+                integriteit en onafhankelijkheid. Dat zijn de kernwaarden van de Registeradviseur in Assurantiën, RAiA. De
+                RAiA kiest ervoor om zich kwalitatief te onderscheiden in zijn dienstverlening naar de consument en verder
+                te gaan dan de wettelijke vereisten met betrekking tot de kennis en deskundigheid. Het doel van de RAiA is
+                om u kwaliteit te bieden in zijn persoonlijke financieel advies.
+              </p>
+              <p> Voor een deskundig en professioneel verzekeringsadvies gaat u naar de Registeradviseur in Assurantiën. Deskundigheid
+                is een belangrijk onderdeel van de voorwaarden voor de RAiA-erkenning. De eisen waaraan de RAiA moet voldoen,
+                gaan verder dan de Wet op het financieel toezicht en hebben zowel betrekking op vakinhoudelijke kennis als
+                op gedrag.</p>
+              </p>
+            </div>
+          </div>
+        </div>
+        <div class="col s12 m6">
+          <div class="card">
+            <div class="card-image waves-effect waves-block waves-light">
+              <img class="activator kwaliteits-img" src="img/av.jpg">
+            </div>
+            <div class="card-content">
+              <span class="card-title activator grey-text text-darken-4">Employee Benefits Register<i class="material-icons right">more_vert</i></span>
+            </div>
+            <div class="card-reveal">
+              <span class="card-title grey-text text-darken-4">Employee Benefits Register<i class="material-icons right">close</i></span>
+              <p>Ik sta ingeschreven in het Employee Benefits Register als Registeradviseur Verzuim- en Inkomensmanagement (RVI).
+              </p>
+              <p>In 2003 ontwikkelde Avans+/ Instituut Scire twee opleidingen op het gebied van Employee Benefits (EB). Avans+/
+                Instituut Scire reageerde daarmee op een behoefte vanuit de markt naar gespecialiseerde EB- adviseurs. Dit
+                register wil graag een bijdrage leveren aan de kwaliteitsverbetering en kwaliteitsborging van EB- adviseurs
+                en verzuimspecialisten.</p>
+              <p>Adviseurs geregistreerd in dit register, zijn in staat Employee Benefits en/ of Verzuim adviezen te geven op
+                het hoogste kwaliteitsniveau. Wanneer u gebruik wilt maken van de diensten van een adviseur, kunt u hier
+                op naam of locatie zoeken.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
 
-                    <li class="wow fadeInUp" data-wow-delay="0.3s"><i class="fa fa-phone teal-text"></i>
-                        <p><a href="tel:+310649879033">06-49879033</a></p>
-                    </li>
+    <!--Documenten-->
+    <div class="section" id="Documenten">
 
-                    <li class="wow fadeInUp" data-wow-delay="0.4s"><i class="fa fa-envelope teal-text"></i>
-                        <p><a href="mailto:info@eddyhouben.nl">info@eddyhouben.nl</a></p>
-                    </li>
-                    <li class="wow fadeInUp" data-wow-delay="0.4s"><i class="fa fa-info teal-text"></i>
-                        <p>KvK-nr. 63847744<br> AFM-nr. 12043440<br> KiFiD-nr. 300.016090<br> Bankrek. nr. NL40 RABO 0306 0817
-                            68
-                        </p>
-                    </li>
+      <div class="row">
+        <div class="col s12 m12">
+          <div class="icon-block">
+            <h2 class="center light-blue-text"><i class="material-icons">file_download</i></h2>
+            <h5 class="center">Documenten</h5>
+            <hr>
+            <div class="row">
+              <div class="col s12 m6">
+                <ul class="collection">
+                  <li class="collection-item">
+                    <a href="./docs/Risicos.pdf" target="_blank"> Dienstverleningsdocument Risico's afdekken</a>
+                  </li>
+                  <li class="collection-item">
+                    <a href="./docs/vermogen.pdf" target="_blank"> Dienstverleningsdocument Vermogen opbouwen</a>
+                  </li>
+                  <li class="collection-item">
+                    <a href="./docs/Broch_afm.pdf" target="_blank"> Brochure van de AFM: Een financiële klacht?</a>
+                  </li>
                 </ul>
+              </div>
+              <div class="col s12 m6">
+                <ul class="collection">
+                  <li class="collection-item">
+                    <a href="./docs/schadeformulier%20algemeen_pen.pdf" target="_blank"> Schadeaangifteformulier Algemeen</a>
+                  </li>
+                  <li class="collection-item">
+                    <a href="./docs/schadeformulier%20algemeen_dig.pdf" target="_blank"> Schadeaangifteformulier Algemeen (digitaal in te vullen)</a>
+                  </li>
+                  <li class="collection-item">
+                    <a href="./docs/schadeformulier%20verkeer.pdf" target="_blank"> Schadeaangifteformulier verkeer (Aanrijdingsformulier)</a>
+                  </li>
+                  <li class="collection-item">
+                    <a href="./docs/formulierenset%20Waarborgfonds%20Motorverkeer.pdf" target="_blank"> Formulierenset Waarborgfonds Motorverkeer</a>
+                  </li>
+                </ul>
+              </div>
             </div>
-        </section>
-        <!--Section: Contact-->
-
+          </div>
         </div>
-        <!--/ Main container-->
+      </div>
 
+    </div>
 
+    <!--Contact-->
+    <div class="section" id="Contact">
 
-        <!--Footer-->
-        <footer class="page-footer center-on-small-only">
+      <div class="row">
+        <div class="col s12 m12">
+          <div class="icon-block">
+            <h5 class="center">Contact</h5>
+            <hr>
+            <div class="row">
+              <div class="col s12 m6">
+                <ul class="center">
+                  <li>
+                    <h5 class="center light-blue-text"><i class="material-icons">location_on</i></h5>
+                    <address>Frank Bastiaans Assurantiën<br>Postbus 1001<br>6235 ZG Ulestraten</address>
+                  </li>
+                  <li>
+                    <h5 class="center light-blue-text"><i class="material-icons">call</i></h5>
+                    <p><a href="tel:+310649879033">06-21512526</a></p>
+                  </li>
 
-
-            <!--Copyright-->
-            <div class="footer-copyright">
-                <div class="container-fluid">
-                    © 2017 Copyright: <a href="http://www.eddyhouben.nl"> eddyhouben.nl </a>
-
-                </div>
+                  <li>
+                    <h5 class="center light-blue-text"><i class="material-icons">mail</i></h5>
+                    <p><a href="mailto:info@eddyhouben.nl">info@frankbastiaans.nl</a></p>
+                  </li>
+                  <li>
+                    <h5 class="center light-blue-text"><i class="material-icons">info</i></h5>
+                    <p>KvK-nr. 56632207<br> AFM-nr. 12041712<br> KiFiD-nr. 300.015343<br> Bankrek. nr. NL87 RABO 0302843353
+                    </p>
+                  </li>
+                </ul>
+              </div>
+              <div class="col s12 m6">
+                <form class="col s12" action="" method="POST">
+                  <div class="row">
+                    <div class="input-field col s12">
+                      <input placeholder="Uw naam (Verplicht)" id="naam" type="text" class="validate" name="naam">
+                    </div>
+                  </div>
+                  <div class="row">
+                    <div class="input-field col s12">
+                      <input placeholder="Uw email (Verplicht)" id="email" type="email" class="validate" name="_replyto">
+                    </div>
+                  </div>
+                  <div class="row">
+                    <div class="input-field col s12">
+                      <input placeholder="Onderwerp" id="onderwerp" type="text" class="validate" name="onderwerp">
+                    </div>
+                  </div>
+                  <div class="row">
+                    <div class="input-field col s12">
+                      <textarea id="tekst" class="materialize-textarea" name="tekst"></textarea>
+                      <label for="textarea1">Uw Bericht</label>
+                    </div>
+                  </div>
+                  <button class="btn waves-effect waves-light" type="submit" name="submit" name="Send">Versturen
+                    <i class="material-icons right">send</i>
+                  </button>
+                </form>
+              </div>
             </div>
-            <!--/.Copyright-->
+          </div>
+        </div>
+      </div>
 
-        </footer>
-        <!--/.Footer-->
-
-
-        <!-- SCRIPTS -->
-
-        <!-- JQuery -->
-        <script type="text/javascript" src="js/jquery-2.2.3.min.js"></script>
-
-        <!-- Bootstrap tooltips -->
-        <script type="text/javascript" src="js/tether.min.js"></script>
-
-        <!-- Bootstrap core JavaScript -->
-        <script type="text/javascript" src="js/bootstrap.min.js"></script>
-
-        <!-- MDB core JavaScript -->
-        <script type="text/javascript" src="js/mdb.min.js"></script>
+    </div>
+  </div>
 
 
-        <!-- Animations init-->
-        <script>
-            new WOW().init();
-            // Close Burgermenu onclick
-            $(function () {
-                var navMain = $("#navbarNav1");
-                navMain.on("click", "a", null, function () {
-                    navMain.collapse('hide');
-                });
-            });
-        </script>
+
+  <div class="fixed-action-btn horizontal click-to-toggle" id="return-to-top">
+    <a class="btn-floating btn-large waves-effect waves-circle waves teal accent-4">
+      <i class="large material-icons">arrow_upward</i>
+    </a>
+  </div>
+
+  <footer class="page-footer blue">
+    <div class="footer-copyright">
+      <div class="container">
+        Made by <a class="brown-text text-lighten-3" href="https://houbenitsolutions.nl">Houben IT-Solutions</a>
+      </div>
+    </div>
+  </footer>
 
 
+  <!--  Scripts-->
+  <script src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
+  <script src="js/bin/materialize.js"></script>
+  <script src="js/init.js"></script>
 
 </body>
 
